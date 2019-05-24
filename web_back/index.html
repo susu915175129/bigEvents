@@ -149,10 +149,20 @@
                     type: 'post',
                     success: function (backData) {
                         console.log(backData);
-                        
                         window.location.href = './login.html';
                     }
                 })
+            })
+
+            // 获取用户信息
+            $.ajax({
+                url: 'https://autumnfish.cn/big/admin/getuser',
+                type: 'get',
+                success: function(backData){
+                    console.log(backData);
+                    $('.user_info span').text('欢迎 '+backData.data.nick_name);
+                    $('.user_info img').attr('src',backData.data.user_pic);
+                }
             })
         })
     </script>
